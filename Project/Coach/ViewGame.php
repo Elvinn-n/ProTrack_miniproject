@@ -3,6 +3,9 @@
 
 <?php
 include("../Assets/connection/connection.php");
+
+
+
 ?>
 
 <h2 align="center"> Game Details </h2><br>
@@ -30,7 +33,7 @@ $i=0;
     	<td><?php echo $row["game_starttime"]; ?></td>
     	<td><?php echo $row["game_endtime"]; ?></td>
         <td> <a href="AssignPosition.php?gid=<?php echo $row["game_id"]?>"> assign </a> /
-        <a href="LiveReport.php"> Live Report </a></td>
+        <a href="LiveReport.php?gid=<?php echo $row["game_id"]?>"> Live Report </a></td>
  
 
   		</tr>
