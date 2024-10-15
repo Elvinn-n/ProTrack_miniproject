@@ -1,33 +1,35 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Action Selection Form</title>
-</head>
-<body>
-
-<h2>Action Selection Form</h2>
-
-<form action="/submit-action" method="post">
-  <div class="container">
-    <label for="details"><b>Details</b></label>
-    <textarea id="details" name="details" rows="4" cols="50" placeholder="Enter your details here..." required></textarea>
-
-    <label for="action"><b>Action</b></label>
-    <select id="action" name="action" required>
-      <option value="">Select an Action</option>
-      <option value="option1">Option 1</option>
-      <option value="option2">Option 2</option>
-      <option value="option3">Option 3</option>
-    </select>
-
-    <button type="submit">Submit</button>
-  </div>
-
-  <div class="container">
-    <p>Need more options? <a href="#">Contact Support</a>.</p>
-  </div>
+<form name="form1" method="post" action="">
+  <table width="200" border="1">
+    <tr>
+      <td width="91">Details</td>
+      <td width="93"><label for="details"></label>
+      <textarea name="details" id="details" cols="45" rows="5"></textarea></td>
+    </tr>
+    <tr>
+      <td>Time</td>
+      <td><label for="time"></label>
+      <input type="time" name="time" id="time"></td>
+    </tr>
+    <tr>
+      <td>Student</td>
+      <td><label for="student"></label>
+        <select name="student" id="student">
+      </select></td>
+    </tr>
+    <tr>
+      <td>Action</td>
+      <td><label for="action"></label>
+        <select name="action" id="action">
+      </select></td>
+    </tr>
+    <tr>
+      <td>Rate</td>
+      <td><label for="rate"></label>
+        <select name="rate" id="rate">
+      </select></td>
+    </tr>
+    <tr>
+      <td colspan="2"><input type="submit" name="submit" id="submit" value="Submit"></td>
+    </tr>
+  </table>
 </form>
-
-</body>
-</html>
