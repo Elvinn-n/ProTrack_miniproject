@@ -1,25 +1,50 @@
+<?php
+include("../Assets/connection/connection.php");
+
+
+
+
+if(isset($_POST["submit"]))
+	{
+		$content=$_POST["content"];
+		
+		$insQry="insert into tbl_feedback(feedback_content) values('".$content."')";
+		if($con->query($insQry)){
+			echo "Inserted";
+		}
+		
+	}
+
+
+
+?>
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Content Input Form</title>
+    <title>Feedback Form</title>
 </head>
-<body>
+<body align="center">
 
-<h2>Content Input Form</h2>
+  <h2>Complaint Form</h2>
 
-<form action="/submit-content" method="post">
-  <div class="container">
-    <label for="content"><b>Content</b></label>
-    <textarea id="content" name="content" rows="5" cols="40" placeholder="Enter your content here..." required></textarea>
+  <form id="form1" name="form1" method="post" action="">
+    <table align="center" width="200" border="1">
+      <tr>
+        <td width="87">Content</td>
+        <td width="97"><textarea name ="content"  id="content" placeholder="Enter feedback"></textarea></td>
+      </tr>
+      <tr>
+        <td> <input type="submit" name="submit" id="submit" value="Submit"></td>
+      </tr>
 
-    <button type="submit">Submit</button>
-  </div>
-
-  <div class="container">
-    <p>Need more guidance? <a href="#">Help Section</a>.</p>
-  </div>
-</form>
-
+    </table>
+  </form>
 </body>
 </html>
+
+

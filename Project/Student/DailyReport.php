@@ -1,31 +1,147 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php
+include("../Assets/connection/connection.php");
+session_start();
+
+$sid=$_SESSION['sid'];
+
+if(isset($_POST["submit"]))
+	{
+		$details=$_POST["details"];
+		$sleep=$_POST["sleep"];
+		$food=$_POST["food"];
+		$exercise=$_POST["exercise"];
+    $sid=$_SESSION['sid'];
+		
+		
+		$insQry="insert into tbl_dailyreport(student_id,dailyreport_details,dailyreport_sleep,dailyreport_foodamount,dailyreport_exercise,dailyreport_date) values('".$sid."','".$details."','".$sleep."','".$food."','".$exercise."',CURDATE())";
+		if($con->query($insQry)){
+			echo "Inserted";
+		}
+		
+	}
+
+
+
+?>
+
+
+
+
+
+
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Personal Details Form</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />   
+<title>Students</title>
 </head>
-<body>
 
-<h2>Personal Details Form</h2>
 
-<form action="/submit-details" method="post">
-  <div class="container">
-    <label for="details"><b>Details</b></label>
-    <input type="text" id="details" name="details" placeholder="Enter your details here..." required>
+<body align="center">
 
-    <label for="sleep"><b>Sleep</b></label>
-    <input type="number" id="sleep" name="sleep" placeholder="Hours of Sleep" min="0" max="24" required>
 
-    <label for="foodAmount"><b>Food Amount</b></label>
-    <input type="number" id="foodAmount" name="foodAmount" placeholder="Amount of Food" min="0" required>
 
-    <button type="submit">Submit</button>
-  </div>
 
-  <div class="container">
-    <p>Need help filling out this form? <a href="#">Help Section</a>.</p>
-  </div>
-</form>
 
+  <form id="form1" name="form1" method="post" action="">
+    <table align="center" width="200" border="1">
+      <tr>
+        <td width="87">Details</td>
+        <td width="97"><input name ="details" type="text" id="details" value="" placeholder="Enter Details"></td>
+      </tr>
+      <tr>
+        <td width="87">Sleep</td>
+        <td><label for="sleep"></label>
+          <select name="sleep" id="sleep">
+            <?php
+              while($count<=10) {
+        
+                echo "<option value='" . $count . "'>" . $count . "</option>";
+                $count++;
+              }
+            ?>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td width="87">Food</td>
+        <td><label for="food"></label>
+          <select name="food" id="food">
+            <?php
+              while($counts<=10) {
+        
+                echo "<option value='" . $counts . "'>" . $counts . "</option>";
+                $counts++;
+              }
+            ?>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td width="87">Exercise</td>
+        <td width="97"><input name ="exercise" type="text" value="" placeholder="Enter no of exercise sets"></td>
+      </tr>
+      <tr>
+        <td colspan="2" align="center"><input type="submit" name="submit" id="submit" value="submit" /> </td>
+      
+      </tr>
+      <tr>
+        <td colspan="2" align="center"><input type="submit" name="messages" id="messages" value="messages" /> </td>
+      
+      </tr>
+
+              
+            
+    </table>
+  </form>
+
+
+
+  <br><br><br>
+  <?php
+    
+    $f="";
+    $SESSION['view']="";
+    
+    if(isset($_POST["messages"]))
+    {
+      $i=1;
+      $f="read";
+      $_SESSION['view']=$f;
+
+      $selqry="select tbl_dailyreport.*, tbl_coach.coach_name from tbl_dailyreport INNER JOIN tbl_coach ON tbl_dailyreport.coach_id=tbl_coach.coach_id where dailyreport_review IS NOT NULL AND dailyreport_review <> '' AND student_id='".$sid."'";
+      $result = $con->query($selqry);
+
+      
+  ?>
+      <table align="center" width="200" border="1">
+        <tr>
+          <th>slno</th>
+          <th>Date</th>
+          <th>Coach</th>
+          <th>Message</th>
+        </tr>
+        <tr>
+        <?php
+          while($row = $result->fetch_assoc()) {
+            echo "<tr> <td>" . $i++ . "</td><td>" . $row['dailyreport_date'] . "</td><td>" . $row['coach_name'] . "</td><td>" . $row['dailyreport_review'] . "</td> </tr>";
+          }
+        ?>
+        </tr>
+
+      </table>
+
+  <?php
+    }
+    else
+    {
+      $f="unread";
+      $_SESSION['view']=$f;
+
+    }
+
+
+  ?>
+  
 </body>
 </html>
+

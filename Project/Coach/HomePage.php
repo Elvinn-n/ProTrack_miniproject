@@ -73,6 +73,9 @@ session_start();
             <tr>
                 <td><a href="ViewGame.php">View Game</a></td>
             </tr>
+            <tr>
+                <td><a href="Students.php">Students</a></td>
+            </tr>
         </table>
     </form>
 </body>

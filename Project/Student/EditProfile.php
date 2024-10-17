@@ -43,7 +43,7 @@
       <td><input name="new_email" type="text" value="<?php echo $data['student_email'] ?>">	</td> 
     </tr>
 	<tr >
-      <td colspan="2" align="center"><input type="submit" name="update_profile" id="update_profile" value="Update Profile" /> </td>
+	<td colspan="2" align="center"><input type="submit" name="update_profile" id="update_profile" value="Update Profile" /> </td>
       
     </tr>
   </table>

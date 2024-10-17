@@ -18,16 +18,16 @@ session_start();
 <form id="form1" name="form1" method="post" action="">
   <table width="200" border="1">
     <tr>
-      <td><a href="MyProfile.php">MyProfile</td>
+      <td><a href="MyProfile.php">My Profile</td>
     </tr>
     <tr>
-      <td>&nbsp;</td>
+      <td><a href="DailyReport.php">Daily Report</td>
     </tr>
     <tr>
-      <td>&nbsp;</td>
+      <td><a href="Complaint.php">Complaint</td>
     </tr>
     <tr>
-      <td>&nbsp;</td>
+      <td><a href="Feedback.php">Feedback</td>
     </tr>
     <tr>
       <td>&nbsp;</td>
